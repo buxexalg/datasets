@@ -22,16 +22,18 @@ stream.on("data", (data) => {
         floor: Number(data['rooms'].replace("-","0")),
         animal: Boolean(data['animal']),
         furniture: Boolean(data['furniture']),
-        hoa: data['hoa']*100,
-        'rent amount': data['rent amount']*100,
-        'property tax': data['property tax']*100,
-        'fire insurance': data['fire insurance']*100,
-        total: data['total']*100
+        hoa: Number(data['hoa']*100),
+        'rent amount': Number(data['rent amount']*100),
+        'property tax': Number(data['property tax']*100),
+        'fire insurance': Number(data['fire insurance']*100),
+        total: Number(data['total']*100)
     });
 
+
+    
 })
 
-stream.on("end", (data) => {
+stream.on("end", () => {
     const csvWriter = createCsvWriter({
         path: 'imoveis.csv',
         header: [
@@ -46,8 +48,9 @@ stream.on("end", (data) => {
             {id: 'furniture', title: 'furniture'},
             {id: 'hoa', title: 'hoa'},
             {id: 'rent amount', title: 'rent amount'},
-            {id: 'fire insurace', title: 'fire insurace'},
-            {id: 'total', title: 'total'},
+            {id: 'property tax', title: 'property tax'},
+            {id: 'fire insurance', title: 'fire insurance'},
+            {id: 'total', title: 'total'}
         ]
     });
     
