@@ -28,8 +28,6 @@ stream.on("data", (data) => {
         'fire insurance': Number(data['fire insurance']*100),
         total: Number(data['total']*100)
     });
-
-
     
 })
 
